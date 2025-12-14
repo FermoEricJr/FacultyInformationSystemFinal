@@ -1,0 +1,437 @@
+/* css/home.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --maroon-primary: #800000;
+    --maroon-dark: #600000;
+    --maroon-light: #fbecec;
+    --text-dark: #333;
+    --text-light: #666;
+    --sidebar-width: 260px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    overflow-x: hidden;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: var(--sidebar-width);
+    height: 100%;
+    background-color: var(--maroon-primary);
+    color: white;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    padding: 20px;
+    background-color: var(--maroon-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-header h2 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: none; 
+}
+
+.nav-links {
+    list-style: none;
+    padding: 20px 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-links li {
+    width: 100%;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+.nav-links a i {
+    margin-right: 15px;
+    width: 20px;
+    text-align: center;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-left: 4px solid white;
+}
+
+.logout-link {
+    background-color: rgba(0, 0, 0, 0.1);
+    margin-top: auto;
+}
+
+/* --- MAIN CONTENT WRAPPER --- */
+.main-content {
+    transition: margin-left 0.3s ease;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .main-content.shifted {
+        margin-left: var(--sidebar-width);
+    }
+}
+
+/* --- TOP HEADER --- */
+.top-header {
+    background-color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+}
+
+.burger-menu {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    cursor: pointer;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--maroon-primary);
+}
+
+/* --- WELCOME BANNER --- */
+.welcome-banner {
+    background: linear-gradient(135deg, var(--maroon-primary), var(--maroon-dark));
+    color: white;
+    padding: 60px 40px;
+    max-width: 95%; 
+    margin: 30px auto; 
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(128, 0, 0, 0.15);
+}
+
+.welcome-banner h1 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.welcome-banner p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* --- CONTENT AREA & CARDS --- */
+.content-wrapper {
+    padding: 0 30px;
+    max-width: 95%;
+    margin: 0 auto 30px auto;
+    width: 100%;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Inner Sidebar (Profile Summary) */
+.container aside {
+    height: fit-content;
+}
+
+.card {
+    background: white;
+    padding: 25px; /* Standard padding */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--maroon-primary);
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    color: var(--maroon-primary);
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--maroon-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-title small {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: normal;
+}
+
+/* --- PROFILE COMPONENTS --- */
+.profile-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--maroon-primary);
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--maroon-light);
+    margin-bottom: 15px;
+}
+
+.profile-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.profile-meta {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+.badge {
+    background-color: var(--maroon-light);
+    color: var(--maroon-primary);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.edu-list {
+    text-align: left;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.edu-item {
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+}
+
+.edu-degree {
+    font-weight: 600;
+    color: var(--text-dark);
+    display: block;
+}
+
+.edu-school {
+    color: var(--text-light);
+    display: block;
+}
+
+/* --- TABLES --- */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.data-table th {
+    text-align: left;
+    background-color: var(--maroon-light);
+    color: var(--maroon-primary);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+}
+
+.data-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+    color: var(--text-dark);
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.empty-state {
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+}
+
+.empty-state button {
+    background-color: var(--maroon-primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* --- FOOTER --- */
+.main-footer {
+    background-color: #333;
+    color: #ccc;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.85rem;
+    margin-top: auto;
+    width: 100%;
+}
+
+/* --- FACULTY LIST SPECIFIC STYLES --- */
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0; /* Aligns inside header */
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 250px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.search-input:focus {
+    border-color: var(--maroon-primary);
+}
+
+.btn-search {
+    background-color: var(--maroon-primary);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-search:hover {
+    background-color: var(--maroon-dark);
+}
+
+.faculty-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    vertical-align: middle;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+}
+    .btn-view {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background-color: transparent;
+            color: #800000; /* Maroon */
+            border: 1px solid #800000;
+            padding: 5px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-right: 8px;
+        }
+        .btn-view:hover {
+            background-color: #800000;
+            color: white;
+        }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .close-btn {
+        display: block;
+    }
+    .main-content.shifted {
+        margin-left: 0; 
+    }
+    .sidebar.active {
+        box-shadow: 10px 0 20px rgba(0,0,0,0.2);
+    }
+    .welcome-banner, .content-wrapper {
+        max-width: 100%;
+        margin: 20px 0;
+        border-radius: 0;
+    }
+    .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-input {
+        width: 150px; /* Smaller search bar on mobile */
+    }
+}

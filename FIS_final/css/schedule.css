@@ -1,0 +1,318 @@
+/* css/schedule.css */
+
+/* --- OVERRIDE CONTAINER WIDTH --- */
+.container {
+    max-width: 1150px !important;
+}
+
+/* --- SCHEDULE LIST CONTAINER --- */
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* --- INDIVIDUAL SCHEDULE ITEM CARD --- */
+.schedule-item {
+    display: flex;
+    align-items: stretch; 
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    min-height: 90px; /* Increased slightly for better breathing room */
+}
+
+.schedule-item:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+    border-color: var(--maroon-primary);
+}
+
+/* --- LEFT SIDE: TIME BOX (ALIGNED) --- */
+.sched-time-box {
+    background-color: var(--maroon-light);
+    color: var(--maroon-primary);
+    
+    /* FIXED WIDTH FOR ALIGNMENT */
+    width: 160px; 
+    flex-shrink: 0; /* Prevents box from squishing if text is long */
+    
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-right: 1px solid rgba(0,0,0,0.05);
+}
+
+.sched-time-box i {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+.sched-time-box span {
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    display: block;
+}
+
+/* --- MIDDLE: DETAILS --- */
+.sched-details {
+    padding: 15px 25px;
+    flex-grow: 1; /* Takes up remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0; /* Prevents text overflow issues in flexbox */
+}
+
+.course-code {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+    flex-wrap: wrap; /* Allows badge to wrap if screen is small */
+}
+
+.section-badge {
+    font-size: 0.75rem;
+    background-color: #f0f2f5;
+    color: #555;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+}
+
+.course-name {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds "..." if name is too long */
+}
+
+/* --- RIGHT SIDE: ACTIONS --- */
+.sched-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 25px;
+    border-left: 1px solid #f0f0f0;
+    background-color: #fafafa;
+}
+
+/* --- ADD BUTTON --- */
+.btn-add {
+    background-color: var(--maroon-primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(128, 0, 0, 0.2);
+}
+
+.btn-add:hover {
+    background-color: var(--maroon-dark);
+    transform: translateY(-1px);
+}
+
+/* --- ACTION ICONS (Edit/Delete) --- */
+.btn-icon {
+    border: 1px solid transparent;
+    background: white;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.btn-icon.edit {
+    color: #007bff;
+    border-color: #e6f0ff;
+}
+.btn-icon.edit:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.btn-icon.delete {
+    color: #dc3545;
+    border-color: #ffe6e6;
+}
+.btn-icon.delete:hover {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+/* --- MODAL STYLES --- */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    animation: slideDown 0.3s ease-out;
+    border: none;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--maroon-primary);
+    color: white;
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.close {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.close:hover {
+    opacity: 1;
+}
+
+.modal-body {
+    padding: 30px 25px;
+}
+
+.modal-footer {
+    padding: 20px 25px;
+    border-top: 1px solid #eee;
+    text-align: right;
+    background-color: #fafafa;
+    border-radius: 0 0 12px 12px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Form Styles inside Modal */
+.modal-body .form-group {
+    margin-bottom: 20px;
+}
+
+.modal-body label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.modal-body input, .modal-body select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    font-size: 0.95rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+}
+
+.modal-body input:focus, .modal-body select:focus {
+    border-color: var(--maroon-primary);
+    box-shadow: 0 0 0 3px var(--maroon-light);
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.btn-save {
+    background-color: var(--maroon-primary);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+
+.btn-save:hover {
+    background-color: var(--maroon-dark);
+}
+
+.btn-cancel {
+    background-color: white;
+    color: #555;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+
+.btn-cancel:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}

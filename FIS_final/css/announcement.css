@@ -1,0 +1,53 @@
+  /* Specific Styles for Announcements */
+        .announcement-card {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            /* Container Look */
+            border: 1px solid #ddd; 
+            border-left: 6px solid var(--maroon-primary);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08); /* Deeper shadow for visibility */
+            transition: transform 0.2s, box-shadow 0.2s;
+            overflow: hidden; /* Keeps content inside rounded corners */
+        }
+
+        .announcement-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+        }
+
+        /* Header Section of the Card */
+        .ann-header {
+            background-color: #f8f9fa; /* Light grey background for title */
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Wraps on small mobile */
+            gap: 10px;
+        }
+
+        .ann-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--maroon-primary);
+            margin: 0;
+        }
+
+        .ann-date {
+            font-size: 0.8rem;
+            color: #666;
+            background: #e9ecef;
+            padding: 4px 10px;
+            border-radius: 15px;
+            white-space: nowrap;
+        }
+
+        /* Body Section of the Card */
+        .ann-body {
+            padding: 20px;
+            color: #444;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }

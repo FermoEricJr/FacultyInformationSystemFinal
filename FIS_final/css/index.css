@@ -1,0 +1,269 @@
+/* css/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --maroon-primary: #800000;
+    --maroon-dark: #600000;
+    --maroon-light: #fbecec;
+    --text-dark: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #fcf2f2; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+    /* --- CENTER THE CONTENT --- */
+    align-items: center;     /* Horizontal Center */
+    justify-content: center; /* Vertical Center */
+    
+    /* Reserve space for Fixed Header & Footer so content doesn't hide behind them */
+    padding-top: 60px;    
+    padding-bottom: 50px; 
+    
+    position: relative; /* Needed for the background logo positioning */
+    z-index: 1;
+}
+
+/* --- BACKGROUND LOGO (Watermark) --- */
+body::before {
+    content: "";
+    position: fixed; /* Fixed so it doesn't scroll away */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-image: url('../assets/wmsulogo.JPG');
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* Size reduced */
+    background-size: 800px; 
+    
+    /* Opacity lowered (Watermark effect) */
+    opacity: 0.15; 
+    
+    z-index: -1; /* Ensures it stays behind the form */
+}
+
+/* --- HEADER STYLES --- */
+.main-header {
+    background-color: var(--maroon-primary);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* --- CONTAINER / CARD STYLES --- */
+.container {
+    background: white;
+    padding: 2.5rem; 
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(128, 0, 0, 0.15); 
+    width: 100%;
+    max-width: 400px; 
+    text-align: center;
+    border-top: 5px solid var(--maroon-primary);
+    position: relative;
+    overflow: hidden; 
+}
+
+/* --- ANIMATIONS --- */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Apply animation to the form wrappers whenever they appear */
+#faculty-login-form, 
+#admin-login-form, 
+#signup-form {
+    animation: slideIn 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    color: var(--maroon-primary);
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+
+input:focus {
+    border-color: var(--maroon-primary);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.1);
+}
+
+/* --- SPECIFIC STYLES FOR SIGNUP FORM (Moved from inline) --- */
+#signup-form {
+    text-align: left;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+}
+
+select:focus {
+    border-color: var(--maroon-primary);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.1);
+}
+
+/* --- BUTTONS --- */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--maroon-primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: var(--maroon-dark);
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* --- LINKS --- */
+.toggle-group { 
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    font-size: 0.85rem;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.toggle-group a {
+    color: #666;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s;
+    font-weight: 500;
+}
+
+.toggle-group a:hover {
+    color: var(--maroon-primary);
+    text-decoration: underline;
+}
+
+.admin-link {
+    font-weight: 600;
+    color: var(--maroon-primary) !important;
+    opacity: 0.9;
+}
+
+/* --- FOOTER STYLES --- */
+.main-footer {
+    background-color: #333;
+    color: #ccc;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 900;
+}
+
+/* --- MESSAGES --- */
+.error-msg, .success-msg {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    animation: slideIn 0.3s ease-out;
+}
+
+.error-msg {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+.success-msg {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+/* Helper to hide/show forms */
+.hidden {
+    display: none;
+}

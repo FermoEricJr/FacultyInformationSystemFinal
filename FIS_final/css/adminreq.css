@@ -1,0 +1,8 @@
+        body { padding-top: 80px; justify-content: flex-start; }
+        .table-container { width: 90%; max-width: 1000px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
+        th { background-color: var(--maroon-primary); color: white; }
+        .btn-sm { padding: 5px 10px; font-size: 0.85rem; margin: 0 2px; }
+        .btn-accept { background-color: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer; }
+        .btn-reject { background-color: #dc3545; color: white; border: none; border-radius: 3px; cursor: pointer; }

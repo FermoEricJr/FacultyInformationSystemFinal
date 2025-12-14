@@ -1,0 +1,159 @@
+/* css/admin_print.css */
+
+/* Styles applied ONLY when printing */
+@media print {
+    
+    /* ----------------------------------------------------
+       1. GLOBAL HIDES (Strictly hide navigation/headers)
+    ---------------------------------------------------- */
+    .no-print, 
+    .sidebar, 
+    .top-header, 
+    .main-footer,
+    .btn-print,
+    .btn-icon,
+    button {
+        display: none !important;
+        height: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
+    }
+
+    /* ----------------------------------------------------
+       2. RESET LAYOUT FOR PAPER
+    ---------------------------------------------------- */
+    body {
+        background: white;
+        color: black;
+        margin: 0;
+        padding: 0;
+        font-size: 12pt;
+        height: auto;
+        overflow: visible;
+    }
+
+    .main-content, .content-wrapper, .container {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-shadow: none !important;
+        display: block !important; /* Ensure block layout for flow */
+    }
+
+    /* Clean up cards for paper */
+    .card, .stat-card, .dashboard-header {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        border-radius: 0 !important;
+        margin-bottom: 20px;
+        background: white !important;
+        /* Prevent cards from breaking awkwardly */
+        break-inside: avoid;       
+        page-break-inside: avoid;  
+    }
+
+    /* ----------------------------------------------------
+       3. TABLE HANDLING (Prevent Cut-off)
+    ---------------------------------------------------- */
+    .report-list {
+        width: 100% !important;
+        margin-top: 20px;
+        display: block !important;
+        overflow: visible !important; /* Allow table to expand */
+    }
+
+    table {
+        width: 100% !important;
+        border-collapse: collapse;
+        page-break-inside: auto; /* Allow table to break across pages */
+    }
+
+    thead {
+        display: table-header-group; /* Repeat header on new page */
+    }
+    
+    tr {
+        page-break-inside: avoid; /* Don't cut a single row in half */
+        page-break-after: auto;
+    }
+
+    th {
+        background-color: #eee !important;
+        color: black !important;
+        border: 1px solid #000 !important;
+        padding: 8px;
+    }
+    
+    td {
+        border: 1px solid #ccc !important;
+        padding: 8px;
+    }
+
+    /* ----------------------------------------------------
+       4. PRINT ALL MODE (Default Flow)
+    ---------------------------------------------------- */
+    
+    /* Header Styling */
+    body.print-all .dashboard-header {
+        border-left: 5px solid #800000 !important; 
+        text-align: center;
+        margin-top: 0 !important; /* Ensure it starts at top */
+    }
+
+    /* Stats Grid */
+    body.print-all .stats-grid {
+        display: flex !important;
+        justify-content: space-between;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+    
+    body.print-all .stat-card {
+        flex: 1;
+        border-bottom: 2px solid #800000 !important;
+    }
+
+    /* Charts - Stack vertically */
+    body.print-all .charts-row {
+        display: block !important; 
+    }
+
+    body.print-all .chart-container {
+        width: 100% !important;
+        height: 350px !important; 
+        margin-bottom: 30px; 
+        page-break-inside: avoid; 
+    }
+
+    /* ----------------------------------------------------
+       5. PRINT SPECIFIC SECTION ONLY (Visibility Method)
+    ---------------------------------------------------- */
+
+    /* --- PRINT DEPARTMENT GRAPH ONLY --- */
+    body.print-dept * { visibility: hidden; }
+    body.print-dept #dept-chart-card, body.print-dept #dept-chart-card * {
+        visibility: visible;
+    }
+    body.print-dept #dept-chart-card {
+        position: absolute; top: 0; left: 0; width: 100% !important; border: none !important;
+    }
+
+    /* --- PRINT DESIGNATION GRAPH ONLY --- */
+    body.print-desig * { visibility: hidden; }
+    body.print-desig #desig-chart-card, body.print-desig #desig-chart-card * {
+        visibility: visible;
+    }
+    body.print-desig #desig-chart-card {
+        position: absolute; top: 0; left: 0; width: 100% !important; border: none !important;
+    }
+
+    /* --- PRINT LIST ONLY --- */
+    body.print-list * { visibility: hidden; }
+    body.print-list #list-card, body.print-list #list-card * {
+        visibility: visible;
+    }
+    body.print-list #list-card {
+        position: absolute; top: 0; left: 0; width: 100% !important; border: none !important;
+    }
+}   

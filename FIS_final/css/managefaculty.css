@@ -1,0 +1,272 @@
+/* css/managefaculty.css */
+
+/* --- MAIN LAYOUT & CENTERING --- */
+.container {
+    max-width: 1400px !important; /* Expanded significantly */
+    margin: 0 auto !important; 
+    display: block !important; 
+    width: 98%; /* Use almost full width */
+}
+
+/* --- SEARCH & FILTER BAR ALIGNMENT --- */
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Filter Dropdowns */
+.filter-select {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    min-width: 160px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.filter-select:focus {
+    border-color: var(--maroon-primary);
+    box-shadow: 0 0 0 3px var(--maroon-light);
+}
+
+.search-box {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 250px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-box:focus {
+    border-color: var(--maroon-primary);
+    box-shadow: 0 0 0 3px var(--maroon-light);
+}
+
+/* --- BUTTONS --- */
+.btn-search {
+    background-color: var(--maroon-primary);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    gap: 5px;
+}
+
+.btn-search:hover {
+    background-color: var(--maroon-dark);
+}
+
+.btn-clear {
+    color: #dc3545;
+    text-decoration: none;
+    padding: 8px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.btn-clear:hover {
+    color: #a71d2a;
+    background-color: #fff5f5;
+    border-color: #f5c6cb;
+}
+
+/* --- ACTION BUTTONS --- */
+.action-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-icon {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+/* View Button Style */
+.btn-view {
+    color: #17a2b8;
+    background-color: #e0f7fa;
+}
+.btn-view:hover { background-color: #17a2b8; color: white; transform: scale(1.1); }
+
+/* Edit Button Style */
+.btn-edit {
+    color: #007bff;
+    background-color: #e6f0ff;
+}
+.btn-edit:hover { background-color: #007bff; color: white; transform: scale(1.1); }
+
+/* Delete Button Style */
+.btn-del {
+    color: #dc3545;
+    background-color: #fff5f5;
+}
+.btn-del:hover { background-color: #dc3545; color: white; transform: scale(1.1); }
+
+/* --- ADMIN BADGE --- */
+.admin-badge {
+    background-color: var(--maroon-primary);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px; 
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+/* --- DATA TABLE LAYOUT --- */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+/* Updated: Center align all TH */
+.data-table th {
+    background-color: #f8f9fa;
+    color: var(--text-dark);
+    font-weight: 600;
+    text-align: center; 
+    padding: 15px;
+    border-bottom: 2px solid var(--maroon-primary);
+    white-space: nowrap;
+}
+
+.data-table td {
+    padding: 15px;
+    vertical-align: middle;
+    border-bottom: 1px solid #eee;
+    color: var(--text-dark);
+    text-align: center; 
+}
+
+/* Left align specific columns */
+.data-table td:nth-child(1), 
+.data-table td:nth-child(2),
+.data-table td:nth-child(5) { /* Designation left align looks okay too, but Email (5) should be left */
+   text-align: left; 
+}
+
+.data-table tr:hover {
+    background-color: #fafafa;
+}
+
+/* Explicit Column Widths (Updated for new column) */
+.data-table th:nth-child(1) { width: 25%; } /* Name */
+.data-table th:nth-child(2) { width: 15%; } /* Dept */
+.data-table th:nth-child(3) { width: 15%; } /* Designation */
+.data-table th:nth-child(4) { width: 20%; } /* Email */
+.data-table th:nth-child(5) { width: 15%; } /* Credentials (New) */
+.data-table th:nth-child(6) { width: 10%; text-align: center; } /* Actions */
+
+/* --- TABLE CONTENT STYLING --- */
+.faculty-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.faculty-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #eee;
+    flex-shrink: 0;
+}
+
+.faculty-name {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.designation-badge {
+    background-color: #f0f2f5;
+    color: #555;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid #ddd;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Credentials Styling */
+.cred-box {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    display: inline-block;
+    text-align: left;
+}
+.cred-box strong {
+    color: var(--maroon-primary);
+}
+
+/* Responsive Tweaks */
+@media (max-width: 900px) {
+    .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .search-container {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .search-box, .filter-select {
+        width: 100%;
+    }
+    .card {
+        overflow-x: auto;
+    }
+    .data-table {
+        min-width: 900px; /* Increased min width for scroll */
+    }
+}
